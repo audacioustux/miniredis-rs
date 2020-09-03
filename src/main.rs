@@ -3,15 +3,8 @@ use mini_redis::{Connection, Frame};
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use tokio::net::{TcpListener, TcpStream};
-use tokio::sync::mpsc;
 
 type Db = Arc<Mutex<HashMap<String, Bytes>>>;
-
-#[derive(Debug)]
-enum Command {
-    Get { key: String },
-    Set { key: String, val: Bytes },
-}
 
 #[tokio::main]
 pub async fn main() {
